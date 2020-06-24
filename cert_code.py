@@ -18,15 +18,15 @@ drive.mount('/gdrive', force_remount=True)
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 
-data = pd.read_excel('/gdrive/My Drive/cert/Cert_Copy.xlsx')            #write the path of your own xlsx file
+data = pd.read_excel('/gdrive/My Drive/cert/Cert_Copy.xlsx')            #write the path of your own xlsx file of names
 
 name_list = data["Name"].tolist()
 
 for i in name_list:
-    im = Image.open('/gdrive/My Drive/cert/cert.jpg')       #Put your own  file Path
+    im = Image.open('/gdrive/My Drive/cert/cert.jpg')       #Put your own certificate file Path here
     d = ImageDraw.Draw(im)
-    location = (1117, 1201)
-    text_color = (0, 137, 209)
+    location = (1117, 1201)  #the location where you want to write the name
+    text_color = (0, 137, 209)   #Color of text
     font = ImageFont.truetype("/gdrive/My Drive/cert/Fonts/Afternoon in Stereo Personal Use.ttf",120)   #write the path of your font, if exists then write the name directly
     d.text(location, i, fill = text_color, font = font)
     im.save("/gdrive/My Drive/cert/Certificates/certificate_" + i + ".pdf")         #Put your own path to save the file
